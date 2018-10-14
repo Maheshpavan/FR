@@ -1,0 +1,7 @@
+ump.select.sys_active_config.state = select name from aqarabia.sys_active_config where state='1'
+ump.select.config_param_sets.state = select param_name, param_value from aqarabia.config_param_sets where state='1' AND configset_name =? AND module_name IN !!modulenames!!
+ump.select.config_param_sets.version = select max(version) as version from aqarabia.config_param_sets where version is null or version > $(currentmaxversion)
+
+ump.param.reloadtime=60000
+ump.param.modulename=API
+ump.log4j.file.reload.delay=60000

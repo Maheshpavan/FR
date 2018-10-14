@@ -1,0 +1,56 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <mvc:annotation-driven />
+   <context:component-scan base-package="com" />
+    <!--<mvc:resources mapping="/resources/**" location="/resources/" />-->  
+    
+    <mvc:resources mapping="/images/accused/**" location="file:E:/xampp/htdocs/fr/public/enrolled_images/accused/"/>  
+    <mvc:resources mapping="/images/facebook/**" location="file:E:/xampp/htdocs/fr/public/enrolled_images/facebook/"/>  
+    <mvc:resources mapping="/images/person_missing/**" location="file:E:/xampp/htdocs/fr/public/enrolled_images/person_missing/"/>  
+    <mvc:resources mapping="/images/person_found/**" location="file:E:/xampp/htdocs/fr/public/enrolled_images/person_found/"/>  
+    <mvc:resources mapping="/images/dead_bodies/**" location="file:E:/xampp/htdocs/fr/public/enrolled_images/dead_bodies/"/>  
+    <mvc:resources mapping="/images/victims/**" location="file:E:/xampp/htdocs/fr/public/enrolled_images/victims/"/>  
+    <mvc:resources mapping="/images/others/**" location="file:E:/xampp/htdocs/fr/public/enrolled_images/others/"/>  
+    <!--<mvc:resources mapping="/images/**" location="file:/api/images/"/>--> 
+<!--    <bean name="jsonTemplate" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+    <bean id="localeResolver"
+              class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="en" />
+    </bean>
+
+ <mvc:interceptors>
+  <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+   <property name="paramName" value="language" />
+  </bean>
+ </mvc:interceptors>
+
+     Register the welcome.properties 
+ <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+  <property name="basename" value="classpath:messages" />
+  <property name="defaultEncoding" value="UTF-8" />
+ </bean>-->
+
+    <bean id="viewResolver"
+              class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix">
+            <value>/WEB-INF/jsp/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="10000000" />
+    </bean>
+</beans>
