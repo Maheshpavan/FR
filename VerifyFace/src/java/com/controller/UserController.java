@@ -84,6 +84,7 @@ public class UserController {
             @RequestParam(value = "psqno", defaultValue = "") String personSeqNumber,
             @RequestParam(value = "imageName") String imageName,
             @RequestParam(value = "folderNames", defaultValue = "") String folderNames,
+            @RequestParam(value = "templateFolderName", defaultValue = "") String templateFolderName,
             HttpSession httpSession,
             HttpServletResponse servletResponse) {
         String transId = UUID.randomUUID().toString();
@@ -136,6 +137,7 @@ public class UserController {
                 user.setImageLocation(folderDir.getAbsolutePath() + File.separator + newFilenmae);
                 user.setImageName(multipartfile.getOriginalFilename());
                 user.setPersonSeqNumber(personSeqNumber);
+                user.setTemplateFolderName(templateFolderName);
                 users.add(user);
             }
 
@@ -163,6 +165,7 @@ public class UserController {
             @RequestParam(value = "psqno", defaultValue = "") String personSeqNumber,
             @RequestParam(value = "imageName") String imageName,
             @RequestParam(value = "folderNames", defaultValue = "") String folderNames,
+            @RequestParam(value = "templateFolderName", defaultValue = "") String templateFolderName,
             HttpSession httpSession,
             HttpServletResponse servletResponse) {
         String transId = UUID.randomUUID().toString();
@@ -254,6 +257,7 @@ public class UserController {
                 user.setImageLocation(folderDir.getAbsolutePath() + File.separator + newFilenmae);
                 user.setImageName(newFilenmae);
                 user.setPersonSeqNumber(personSeqNumber);
+                user.setTemplateFolderName(templateFolderName);
                 users.add(user);
             }
             return objUserService.addUserDetails(users, transId);
@@ -280,6 +284,7 @@ public class UserController {
             @RequestParam(value = "psqno", defaultValue = "") String personSeqNumber,
             @RequestParam(value = "imageName") String imageName,
             @RequestParam(value = "folderNames", defaultValue = "") String folderNames,
+            @RequestParam(value = "templateFolderName", defaultValue = "") String templateFolderName,
             HttpSession httpSession,
             HttpServletResponse servletResponse) {
         String transId = UUID.randomUUID().toString();
@@ -380,6 +385,7 @@ public class UserController {
                 user.setImageLocation(tempFolderPath + File.separator + newFilenmae);
                 user.setImageName(newFilenmae);
                 user.setPersonSeqNumber(personSeqNumber);
+                user.setTemplateFolderName(templateFolderName);
                 users.add(user);
             }
             return objUserService.addUserDetails(users, transId);
@@ -416,6 +422,7 @@ public class UserController {
             @RequestParam(value = "psqno", defaultValue = "") String personSeqNumber,
             @RequestParam(value = "imageName") String imageName,
             @RequestParam(value = "folderNames", defaultValue = "") String folderNames,
+            @RequestParam(value = "templateFolderName", defaultValue = "") String templateFolderName,
             HttpSession httpSession,
             HttpServletResponse servletResponse) {
         String transId = UUID.randomUUID().toString();
@@ -507,6 +514,7 @@ public class UserController {
                 user.setImageLocation(folderDir.getAbsolutePath() + File.separator + newFilenmae);
                 user.setImageName(newFilenmae);
                 user.setPersonSeqNumber(personSeqNumber);
+                user.setTemplateFolderName(templateFolderName);
                 users.add(user);
             }
             return objUserService.addUserDetails(users, transId);

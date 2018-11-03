@@ -26,7 +26,16 @@ public class User {
     private String imageLink;
     private String personSeqNumber;
     private String folderName;
+    private String templateFolderName;
 
+    public String getTemplateFolderName() {
+        return templateFolderName;
+    }
+
+    public void setTemplateFolderName(String templateFolderName) {
+        this.templateFolderName = templateFolderName;
+    }
+    
     public String getFolderName() {
         return folderName;
     }

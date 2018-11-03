@@ -104,8 +104,12 @@ public class UserDAO {
         int nTemplateStatus = -1;
 
         for (User user : listUser) {
+            String templateFolderName = user.getTemplateFolderName();
+            if (StringUtils.isBlank(templateFolderName)) {
+                templateFolderName = user.getFolderName();
+            }
 
-            nTemplateStatus = createTemplate(user.getImageLocation(), user.getUuid(), user.getFolderName());
+            nTemplateStatus = createTemplate(user.getImageLocation(), user.getUuid(), templateFolderName);
             try {
                 if (nTemplateStatus != 0) {
                     nDBStatus = 2;
@@ -427,6 +431,14 @@ public class UserDAO {
                 System.out.format("Failed to create probe template for : %s . Status: %s.\n", uuid, status);
                 return -1;
             } else {
+                try {
+                    File file = new File(templatesPath + folderName);
+                    if (!file.isDirectory()) {
+                        file.mkdir();
+                    }
+                } catch (Exception e) {
+                }
+                //template saving to the folder
                 NFile.writeAllBytes(templatesPath + folderName + File.separator + uuid, probeSubject.getTemplate().save());
             }
             enrollTask.getSubjects().add(probeSubject);
@@ -610,8 +622,6 @@ public class UserDAO {
                 resultList = new ArrayList<>();
                 for (NMatchingResult result : nSubject.getMatchingResults()) {
                     resultsBean = new MatchedResultsBean(result.getScore(), result.getId());
-//                    resultsBean.setId(result.getId());
-//                    resultsBean.setScore(result.getScore());
                     resultList.add(resultsBean);
 //                    System.out.format("Matched with ID: '%s' with score %d\n", result.getId(), result.getScore());
                 }
